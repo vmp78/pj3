@@ -1,0 +1,102 @@
+/* Đặt một background nhẹ cho trang */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7fc;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Container chính */
+  .signup-container {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Tiêu đề */
+  h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  /* Form */
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  /* Các trường nhập */
+  input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+  }
+  
+  /* Tạo hiệu ứng khi hover trên các input */
+  input:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+  
+  /* Nút Submit */
+  button {
+    padding: 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Nút hover */
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Nút hủy */
+  button.cancel {
+    background-color: #ccc;
+    margin-left: 10px;
+  }
+  
+  button.cancel:hover {
+    background-color: #aaa;
+  }
+  
+  /* Hiển thị thông báo lỗi */
+  p.error {
+    color: red;
+    text-align: center;
+    font-size: 14px;
+  }
+  
+  /* Các thông tin người dùng */
+  .profile-info p {
+    font-size: 16px;
+    color: #333;
+  }
+  
+  /* Nút Edit Profile */
+  button.edit {
+    padding: 10px 15px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 15px;
+  }
+  
+  button.edit:hover {
+    background-color: #218838;
+  }
+  

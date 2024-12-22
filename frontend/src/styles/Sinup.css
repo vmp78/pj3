@@ -1,0 +1,103 @@
+/* Reset toàn bộ padding và margin */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f5f5; /* Màu nền nhẹ nhàng */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+  }
+  
+  .signup-container {
+    background: #ffffff; /* Nền trắng */
+    border-radius: 10px; /* Bo góc khung */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Hiệu ứng đổ bóng */
+    padding: 2rem;
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .signup-container h2 {
+    text-align: center;
+    color: #333333;
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+  }
+  
+  .signup-container form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .signup-container form label {
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: #555555;
+  }
+  
+  .signup-container form input {
+    padding: 0.8rem;
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+  }
+  
+  .signup-container form input:focus {
+    outline: none;
+    border-color: #007bff; /* Màu xanh khi focus */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Hiệu ứng focus */
+  }
+  
+  .signup-container button {
+    background-color: #28a745; /* Màu xanh lá */
+    color: #ffffff;
+    padding: 0.8rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .signup-container button:hover {
+    background-color: #218838; /* Màu xanh lá đậm hơn khi hover */
+  }
+  
+  .signup-container p {
+    text-align: center;
+    margin-top: 1rem;
+    color: #666666;
+  }
+  
+  .signup-container a {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    color: #007bff;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    font-weight: bold;
+  }
+
+  .signup-container form input {
+    padding: 0.8rem;
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    background-color: #ffffff; /* Màu nền trắng */
+    color: #333333; /* Màu chữ tối (đen) */
+  }
+  
+  .signup-container a:hover {
+    text-decoration: underline;
+  }
+  
