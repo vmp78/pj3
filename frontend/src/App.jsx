@@ -1,6 +1,8 @@
+import {BrowserRouter, Route, Routes,} from 'react-router-dom'
+import {Toaster} from "react-hot-toast"
+
 import Signup from './Signup'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import {BrowserRouter, Route, Routes,} from 'react-router-dom'
 import Login from './Login'
 import HomeUser from './HomeUser'
 import HomeManager from './HomeManager'
@@ -19,6 +21,7 @@ function App() {
       <Route path='/home-manager' element={<HomeManager/>}> </Route>
       <Route path='/home-employee' element={<HomeEmployee/>}> </Route>
     </Routes>
+    <Toaster />
     </BrowserRouter>
   )
 }

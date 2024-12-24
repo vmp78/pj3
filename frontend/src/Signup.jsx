@@ -1,24 +1,45 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import 'D:/pj3/frontend/src/styles/Sinup.css';
-import axios from 'axios'
-import { useNavigate } from 'react-router-dom';
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import "./styles/Signup.css";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-hot-toast";
 
 const Signup = () => {
-  const [name, setName]= useState()
-  const [email, setEmail]= useState()
-  const [phone, setPhone]= useState()
-  const [password, setPassword]= useState()
-  const navigate = useNavigate()
+  const [name, setName] = useState();
+  const [email, setEmail] = useState();
+  const [phone, setPhone] = useState();
+  const [password, setPassword] = useState();
+  const navigate = useNavigate();
 
-  const handleSubmit = (e)=>{
-    e.preventDefault()
-    axios.post('http://localhost:3001/signup',{name,email,phone,password})
-    .then(result => {console.log(result),
-      navigate('/login')
-    })
-    .catch(err=> console.log(err))
-}
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await axios.post("http://localhost:3001/signup", {
+        phone,
+        password,
+        name,
+        email,
+      });
+
+      toast.success("Successfully");
+      navigate("/login");
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        if (error.response) {
+          const message =
+            error.response.data?.message || "Something went wrong!";
+          toast.error(message);
+        } else if (error.request) {
+          // Lỗi khi không nhận được phản hồi từ server
+          toast.error("No response received from server.");
+          console.error("Error request:", error.request);
+        }
+      } else {
+        toast.error("Something went wrong!");
+      }
+    }
+  };
 
   return (
     <div className="signup-container">

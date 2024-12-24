@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import EditProfile from "D:/pj3/frontend/src/components/EditIn4.jsx";  // Import component EditProfile
+import EditProfile from "./styles/EditIn4.css";
 
 function HomeManager() {
   const [profile, setProfile] = useState(null);
-  const [isEditing, setIsEditing] = useState(false);  // State để kiểm tra việc chỉnh sửa
+  const [isEditing, setIsEditing] = useState(false); // State để kiểm tra việc chỉnh sửa
   const navigate = useNavigate();
 
   // Kiểm tra thông tin người dùng khi tải lại trang
@@ -28,12 +28,12 @@ function HomeManager() {
   const handleSave = (updatedProfile) => {
     setProfile(updatedProfile); // Cập nhật state với thông tin đã chỉnh sửa
     localStorage.setItem("account", JSON.stringify(updatedProfile)); // Lưu thông tin mới vào localStorage
-    setIsEditing(false);  // Đóng form chỉnh sửa
+    setIsEditing(false); // Đóng form chỉnh sửa
   };
 
   // Hàm hủy chỉnh sửa
   const handleCancel = () => {
-    setIsEditing(false);  // Đóng form chỉnh sửa
+    setIsEditing(false); // Đóng form chỉnh sửa
   };
 
   if (!profile) {

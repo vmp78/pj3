@@ -2,44 +2,52 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-hot-toast";
 
 function Login() {
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState(""); // Trạng thái cho lỗi
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-  
-    axios
-      .post("http://localhost:3001/login", { phone, password })
-      .then((result) => {
-        const account = result.data;
-        console.log(account);
-  
-        if (account.message === "Success") {
-          localStorage.setItem("account", JSON.stringify(account));  // Lưu thông tin vào localStorage
-  
-          // Điều hướng dựa trên vai trò
-          if (account.role === "user") {
-            navigate("/home-user");
-          } else if (account.role === "manager") {
-            navigate("/home-manager");
-          } else if (account.role === "employee") {
-            navigate("/home-employee");
-          }
-        } else {
-          // Hiển thị thông báo lỗi từ server
-          setError(account.message);
-        }
-      })
-      .catch((err) => {
-        console.error(err);
-        setError("Đã xảy ra lỗi, vui lòng thử lại!");
+
+    try {
+      const res = await axios.post("http://localhost:3001/login", {
+        phone,
+        password,
       });
+
+      const token = res.data.token;
+      const role = res.data.role;
+
+      localStorage.setItem("token", JSON.stringify(token));
+      localStorage.setItem("role", JSON.stringify(role));
+
+      if (role === "user") {
+        navigate("/home-user");
+      } else if (role === "manager") {
+        navigate("/home-manager");
+      } else if (role === "employee") {
+        navigate("/home-employee");
+      }
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        if (error.response) {
+          const message =
+            error.response.data?.message || "Something went wrong!";
+          toast.error(message);
+        } else if (error.request) {
+          // Lỗi khi không nhận được phản hồi từ server
+          toast.error("No response received from server.");
+          console.error("Error request:", error.request);
+        }
+      } else {
+        toast.error("Something went wrong!");
+      }
+    }
   };
-  
+
   return (
     <div className="signup-container">
       <h2>Đăng nhập</h2>
@@ -64,7 +72,6 @@ function Login() {
         />
         <button type="submit">Đăng nhập</button>
       </form>
-      {error && <p style={{ color: "red" }}>{error}</p>}
       <p>Bạn chưa có tài khoản?</p>
       <Link to="/signup">Đăng ký</Link>
     </div>
